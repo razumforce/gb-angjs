@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ANGULAR / BACKBONE Simple App</title>
+  <script src="vendor/jq331.js"></script>
+  <script src="./vendor/_.js"></script>
+  <script src="./vendor/bb.js"></script>
+  <script>
+    $(document).ready(function() {
+      var model = new Backbone.Model({
+        name: ''
+      });
+
+      model.on('change:name', function() {
+        $('#myName').html(model.get('name'));
+      });
+
+      $('#myNameInput').on('keyup', function() {
+        model.set('name', $('#myNameInput').val());
+      });
+    });
+  </script>
+</head>
+<body>
+  <div>Введите Ваше имя</div>
+  <input type="text" id="myNameInput" placeholder="введите имя">
+
+  <h1>Привет <span id="myName"></span>!</h1>
+</body>
+</html>

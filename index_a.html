@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ANGULAR / BACKBONE Simple App</title>
+  <script src="vendor/jq331.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#myNameInput').on('keyup', function() {
+        $('#myName').text($(this).val());
+      });
+    });
+  </script>
+</head>
+<body>
+  <div>Введите Ваше имя</div>
+  <input type="text" id="myNameInput" placeholder="введите имя">
+
+  <h1>Привет <span id="myName"></span>!</h1>
+</body>
+</html>

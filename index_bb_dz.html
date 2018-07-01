@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BACKBONE Simple App DZ1</title>
+  <script src="vendor/jq331.js"></script>
+  <script src="./vendor/_.js"></script>
+  <script src="./vendor/bb.js"></script>
+  <script>
+    $(document).ready(function() {
+      var model = new Backbone.Model({
+        name: '',
+        result: ''
+      });
+
+      model.on('change:name', function() {
+        $('#myName').html(model.get('name'));
+      });
+
+      model.on('change:result', function() { // можно было бы и без этого, прямо в 'onclick' менять через jQuery
+        $('#myResult').html(model.get('result')); // но чтобы проверить как работает Backbone - попробовать так сделать
+      });
+
+      $('#myButton').on('click', function() {
+        model.set('name', $('#myNameInput').val());
+        if (new Date().toISOString().substring(0,10) == $('#myDateInput').val()) {
+          model.set('result', 'Поздравляю с ДР!')
+        } else {
+          model.set('result', 'К сожалению, сегодня не Ваш ДР...')
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <div>Введите Ваше имя</div>
+  <input type="text" id="myNameInput" placeholder="введите имя">
+  <div>Введите ДР (гггг-мм-дд)</div>
+  <input type="text" id="myDateInput" placeholder="гггг-мм-дд">
+  <div>
+    <input type="button" id="myButton" value="Проверить">
+  </div>
+  
+
+  <h1>Привет <span id="myName"></span>!</h1>
+  <h2><span id="myResult"></span></h2>
+</body>
+</html>
