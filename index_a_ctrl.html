@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" ng-controller="myCtrl">
+<head>
+  <meta charset="UTF-8">
+  <title>ANGULAR - Controller test</title>
+  <script src="./vendor/a.js"></script>
+  <script>
+    angular.module('myApp', [])
+      .controller('myCtrl', function myCtrl($scope) {
+        $scope.myDate = new Date().toISOString();
+      });
+    
+    
+  </script>
+</head>
+<body>
+  <div>Введите Ваше имя</div>
+  <input type="text" id="myNameInput" ng-model="myName" placeholder="введите имя">
+
+  <h1>Привет <span>{{myName}}</span>!</h1>
+
+  <div>{{myDate}}</div>
+</body>
+</html>
